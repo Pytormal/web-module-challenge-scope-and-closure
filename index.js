@@ -87,15 +87,18 @@ finalScore(inning, 9) might return:
 
 */ 
 const innings = 9
-function finalScore(callback,num){
 
+function finalScore(callback,innings){
+let home = 0;
+let away = 0;
    
-  for (let i= 0; i < innings; inning++){
-    var inning = Math.round(Math.random());
-  
+  for (let i= 0; i < innings; i++){
+  home = callback() + home
+  away = callback() + away
   }
-  console.log("Home: " + score , "Away: " + score )
-return callback(num)
+
+  console.log("Home: " + home , "Away: " + away )
+return
 }
   
 
@@ -123,19 +126,11 @@ and returns the score at each point in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  function flip(repeat){
-    for (let i = 0; i < repeat; i++){
-      var coinFlip = Math.round(Math.random());
-      if (coinFlip === 1){
-        countHeads = countHeads + 1
-        console.log("Heads");
-      } else{
-        console.log("Tails");
-      }
-    }
-    return(countHeads/repeat)
-    }
+function scoreboard(inningCb, scoreCb, gamesCb) {
+scoreCb()
+for (let i= 0; i < gamesCb; i++){
+}
 }
 
 
+console.log(scoreboard(inning, getInningScore, 9)
