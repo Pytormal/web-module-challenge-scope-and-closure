@@ -18,6 +18,7 @@ function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
 
+
 // ⭐️ Example Challenge END ⭐️
 
 
@@ -27,6 +28,9 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * 
+ * 
+ *          counter2 has access to the outside scope or the code outside of the function
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
@@ -46,7 +50,6 @@ const counter1 = counterMaker();
 
 // counter2 code
 let count = 0;
-
 function counter2() {
   return count++;
 }
@@ -56,11 +59,19 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(min, max){
+min = 0
+max = 2
 
-    /*Code Here*/
+score = Math.floor(Math.random() * (max - min +1) + min);
+
+console.log(score)
+ return score
+  
 
 }
+console.log("task 2")
+inning(9)
 
 /* Task 3: finalScore()
 
@@ -75,12 +86,21 @@ finalScore(inning, 9) might return:
 }
 
 */ 
+const innings = 9
+function finalScore(callback,num){
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+   
+  for (let i= 0; i < innings; inning++){
+    var inning = Math.round(Math.random());
+  
+  }
+  console.log("Home: " + score , "Away: " + score )
+return callback(num)
 }
+  
+
+  console.log("task 3")
+  finalScore(inning, 9)
 
 /* Task 4: 
 
@@ -89,7 +109,7 @@ Create a function called `scoreboard` that accepts the following parameters:
 (1) Callback function `inning` that you wrote above
 (2) A number of innings
 
-and returns the score at each pont in the game, like so:
+and returns the score at each point in the game, like so:
 
 1st inning: 0 - 2
 2nd inning: 1 - 3
@@ -104,7 +124,18 @@ and returns the score at each pont in the game, like so:
 Final Score: 6 - 10 */
 
 function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+  function flip(repeat){
+    for (let i = 0; i < repeat; i++){
+      var coinFlip = Math.round(Math.random());
+      if (coinFlip === 1){
+        countHeads = countHeads + 1
+        console.log("Heads");
+      } else{
+        console.log("Tails");
+      }
+    }
+    return(countHeads/repeat)
+    }
 }
 
 
