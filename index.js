@@ -29,12 +29,21 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ *          counter1 has access to internal scope
  * 
  *          counter2 has access to the outside scope or the code outside of the function
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *          would assume counter1 has closure, it uses a local scope and the function within is seeming to be closing the function
+ * 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ * 
+ *          counter1 is what i similarly used for my task 4, with out locally scoping my counter and setting it to 0, it would be scoping to the callback function.
+ * 
+ *           counter2 is similar to how i used in task 3
+ * 
+ *           both codes work well for different situations
  *
 */
 
@@ -86,24 +95,26 @@ finalScore(inning, 9) might return:
 }
 
 */ 
-const innings = 9
 
-function finalScore(callback,innings){
+
+
+function finalScore(callback,rounds){
 let home = 0;
 let away = 0;
-   
+innings = rounds;
+ 
   for (let i= 0; i < innings; i++){
   home = callback() + home
   away = callback() + away
   }
 
-  console.log("Home: " + home , "Away: " + away )
+  console.log({Home: home , Away: away} )
 return
 }
   
 
   console.log("task 3")
-  finalScore(inning, 9)
+  finalScore(inning,9)
 
 /* Task 4: 
 
@@ -126,11 +137,30 @@ and returns the score at each point in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(inningCb, scoreCb, gamesCb) {
-scoreCb()
-for (let i= 0; i < gamesCb; i++){
-}
-}
 
+function scoreboard(callback, score, gamesCb) {
+  inning = 9
+  innings= 1
 
-console.log(scoreboard(inning, getInningScore, 9)
+  let home = 0;
+  let away = 0;
+ 
+gamesCb = innings
+
+     
+    for (let i= 0; i < inning; i++){    
+        home = callback() + home
+        away = callback() + away
+    console.log( innings + "th innings " + home + " - " + away )
+    
+    innings +=1
+    }
+
+     score = `${home} - ${away}`;
+console.log("Final Score " + score)
+  
+  return innings
+  }
+
+console.log("task 4")
+console.log(scoreboard(inning, ))
