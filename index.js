@@ -33,11 +33,19 @@ function processFirstItem(stringList, callback) {
  * 
  *          counter2 has access to the outside scope or the code outside of the function
  * 
+ * 
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
  *          would assume counter1 has closure, it uses a local scope and the function within is seeming to be closing the function
  * 
+ * 
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ * 
+ *          counter1 would be more locally scoped, adding the function or naming the function to call it into the function that would need it.
+ * 
+ * counter2 would be useful for calling out to the global scope, but counter2 can be overridden becuase it uses a 'let' variable
  * 
  *          counter1 is what i similarly used for my task 4, with out locally scoping my counter and setting it to 0, it would be scoping to the callback function.
  * 
@@ -163,4 +171,4 @@ console.log("Final Score " + score)
   }
 
 console.log("task 4")
-console.log(scoreboard(inning, ))
+console.log(scoreboard(inning))
