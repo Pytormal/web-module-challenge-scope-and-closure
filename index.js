@@ -18,6 +18,7 @@ function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
 
+
 // ⭐️ Example Challenge END ⭐️
 
 
@@ -28,9 +29,29 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ *          counter1 has access to internal scope
+ * 
+ *          counter2 has access to the outside scope or the code outside of the function
+ * 
+ * 
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *          would assume counter1 has closure, it uses a local scope and the function within is seeming to be closing the function
+ * 
+ * 
+ * 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ * 
+ *          counter1 would be more locally scoped, adding the function or naming the function to call it into the function that would need it.
+ * 
+ * counter2 would be useful for calling out to the global scope, but counter2 can be overridden becuase it uses a 'let' variable
+ * 
+ *          counter1 is what i similarly used for my task 4, with out locally scoping my counter and setting it to 0, it would be scoping to the callback function.
+ * 
+ *           counter2 is similar to how i used in task 3
+ * 
+ *           both codes work well for different situations
  *
 */
 
@@ -46,7 +67,6 @@ const counter1 = counterMaker();
 
 // counter2 code
 let count = 0;
-
 function counter2() {
   return count++;
 }
@@ -56,11 +76,19 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(min, max){
+min = 0
+max = 2
 
-    /*Code Here*/
+score = Math.floor(Math.random() * (max - min +1) + min);
+
+console.log(score)
+ return score
+  
 
 }
+console.log("task 2")
+inning(9)
 
 /* Task 3: finalScore()
 
@@ -76,11 +104,25 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
 
-  /*Code Here*/
 
+function finalScore(callback,rounds){
+let home = 0;
+let away = 0;
+innings = rounds;
+ 
+  for (let i= 0; i < innings; i++){
+  home = callback() + home
+  away = callback() + away
+  }
+
+  console.log({Home: home , Away: away} )
+return
 }
+  
+
+  console.log("task 3")
+  finalScore(inning,9)
 
 /* Task 4: 
 
@@ -89,7 +131,7 @@ Create a function called `scoreboard` that accepts the following parameters:
 (1) Callback function `inning` that you wrote above
 (2) A number of innings
 
-and returns the score at each pont in the game, like so:
+and returns the score at each point in the game, like so:
 
 1st inning: 0 - 2
 2nd inning: 1 - 3
@@ -103,8 +145,30 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
 
+function scoreboard(callback, score, gamesCb) {
+  inning = 9
+  innings= 1
 
+  let home = 0;
+  let away = 0;
+ 
+gamesCb = innings
+
+     
+    for (let i= 0; i < inning; i++){    
+        home = callback() + home
+        away = callback() + away
+    console.log( innings + "th innings " + home + " - " + away )
+    
+    innings +=1
+    }
+
+     score = `${home} - ${away}`;
+console.log("Final Score " + score)
+  
+  return innings
+  }
+
+console.log("task 4")
+console.log(scoreboard(inning))
